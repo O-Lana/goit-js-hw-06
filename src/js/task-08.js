@@ -11,6 +11,10 @@
 // </form> 
 
 const form = document.querySelector('.login-form');
+    const formData = {};
+
+form.addEventListener('submit', onFormSubmit);
+
 
 function onFormSubmit(event) {
     event.preventDefault();
@@ -22,13 +26,12 @@ function onFormSubmit(event) {
     if (email.value === "" || password.value === "") {
         return alert("Все поля должны быть заполнены!");
     }
- 
-     const formData = new FormData(event.currentTarget);
-    formData.forEach((inputValue, inputName) =>
-    console.log(`${inputName}: ${inputValue}`)
-  );
 
-  event.currentTarget.reset();
+    formData.email = email.value;
+    formData.password = password.value;
+
+    console.log(formData);
+    event.currentTarget.reset();
+    
 };
 
-form.addEventListener('submit', onFormSubmit);
